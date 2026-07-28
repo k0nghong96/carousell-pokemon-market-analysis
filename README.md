@@ -1,3 +1,8 @@
+# 📊 Pokémon Card Market Analysis
+
+👉 **[Click here to view the Interactive Dashboard](https://k0nghong96.github.io/carousell-pokemon-market-analysis/pokemon_market_report.html)**
+
+
 # 📊 Carousell Pokémon TCG Secondary Market Analysis & Web Scraper
 
 An end-to-end data pipeline, statistical analysis, and machine learning study of **2,968 active Pokémon TCG listings** on Carousell Malaysia. 
