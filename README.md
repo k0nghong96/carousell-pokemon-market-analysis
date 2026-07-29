@@ -69,20 +69,22 @@ Only **150 listings (5.1%)** classify as graded slabs.
 | Bulk & Bundles | 130 | RM100 | RM1,300 |
 | Raw Singles | 2,592 | RM30 | RM240 |
 
-**The premium is concentrated in a single grade point:**
+Of those 150, **21 are non-Pokémon cards** (Disney Lorcana and One Piece) that surface in a Pokémon search. Excluding them, the Pokémon graded median is **RM450** rather than RM550. The classifier in `analysis.py` does not filter by franchise — a limitation, documented rather than hidden.
+
+**The premium is concentrated in a single grade point** (Pokémon only):
 
 | Grade | n | Median |
 |---|---|---|
-| PSA 10 | 41 | RM1,700 |
-| PSA 9 | 27 | RM350 |
+| PSA 10 | 67 | RM1,680 |
+| PSA 9 | 28 | RM350 |
 | PSA 8 | 7 | RM180 |
-| Raw | 2,805 | RM30 |
+| Raw (ungraded) | 2,814 | RM32 |
 
-PSA 10 → PSA 9 is a **4.9× drop**. Below 9, the slab adds little over raw.
+PSA 10 → PSA 9 is a **4.8× drop**. Below 9, the slab adds little over raw.
 
 ### 4. The market runs on Japanese-language singles
 
-"Japanese" appears in **758 titles (25%)** — more than any Pokémon name, rarity code, or product type. Sealed product is nearly absent: booster boxes (21), ETBs (17), sealed (22) together are under 2% of listings.
+"Japanese" appears in **745 titles (25%)** — more than any Pokémon name, rarity code, or product type. Sealed product is nearly absent: booster boxes (21), ETBs (17), sealed (22) together are under 2% of listings.
 
 ### 5. Prices don't decay with listing age
 
@@ -119,7 +121,7 @@ Top drivers by Gini importance:
 Documented so results can be interpreted honestly:
 
 - **83 junk prices** filtered (placeholders like `RM123456`, `RM99999`, `RM0`) — sellers signalling "make an offer"
-- **19 Disney Lorcana slabs** surfaced in the Pokémon search from one seller and were excluded from all graded statistics; they inflated the graded median from RM495 to RM620
+- **21 non-Pokémon graded cards** (Disney Lorcana, One Piece) surface in the Pokémon search, mostly from one seller. `analysis.py` classifies them as Graded Slabs because it matches on grading keywords, not franchise. This lifts the reported graded median from RM450 to RM550 — a known limitation, not a correction that has been applied
 - **Comparable matching is limited.** Only 31% of titles contain a set number, and of 817 distinct set numbers, 744 appear exactly once. This market is a long tail of unique cards — more data yields more *different* cards, not more copies of the same one
 - **Timestamps are day-granular** for listings older than 24h, so weekday assignment carries roughly ±1 day of error
 
@@ -150,11 +152,21 @@ Takes roughly 15–20 minutes and writes timestamped JSON + CSV to `carousell_da
 | `autosave_every` | `10` | Checkpoint frequency |
 | `deep_scrape` | `False` | `True` visits each listing page (slow, more fields) |
 
+### Anonymise before publishing
+
+```bash
+python anonymize_data.py --all data/
+```
+
+Replaces seller usernames with `seller_0001` style pseudonyms and drops profile URLs. Seller-concentration analysis is unaffected.
+
 ### Run the analysis
 
 ```bash
 python analysis.py
 ```
+
+It prints every figure quoted in this README to stdout, so the two can be kept in sync.
 
 ---
 
@@ -163,10 +175,13 @@ python analysis.py
 ```
 ├── carousell_pokemon_scraper.py   # Async Playwright scraper
 ├── analysis.py                    # Statistics + Random Forest model
-├── pokemon_market_report.html     # Interactive dashboard
-├── data/                          # Scraped datasets
+├── anonymize_data.py              # Pseudonymises seller names before publishing
+├── pokemon_market_report.html     # Interactive dashboard (all charts)
+├── pokemon_price_lookup.html      # Searchable price lookup by card or seller
+├── data/                          # Scraped datasets (seller names pseudonymised)
 ├── images/                        # Chart exports
-└── requirements.txt
+├── requirements.txt
+└── LICENSE
 ```
 
 ---
