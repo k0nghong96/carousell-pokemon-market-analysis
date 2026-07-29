@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-# 📊 Pokémon Card Market Analysis
-
-👉 **[Click here to view the Interactive Dashboard](https://k0nghong96.github.io/carousell-pokemon-market-analysis/pokemon_market_report.html)**
-
-
-# 📊 Carousell Pokémon TCG Secondary Market Analysis & Web Scraper
-=======
 # 📊 Carousell Pokémon TCG Market Analysis
->>>>>>> 93f42fb (Fix feature engineering bugs, anonymise data, add license)
 
 **[→ View the interactive dashboard](https://k0nghong96.github.io/carousell-pokemon-market-analysis/pokemon_market_report.html)**
 
@@ -163,8 +154,6 @@ Takes roughly 15–20 minutes and writes timestamped JSON + CSV to `carousell_da
 ```bash
 python analysis.py
 ```
-<<<<<<< HEAD
-=======
 
 ---
 
@@ -209,4 +198,3 @@ If you reuse this, keep the pacing conservative and respect Carousell's Terms of
 ## 📄 License
 
 MIT — see [LICENSE](LICENSE).
->>>>>>> 93f42fb (Fix feature engineering bugs, anonymise data, add license)
