@@ -1,6 +1,7 @@
 # 📊 Carousell Pokémon TCG Market Analysis
 
 **[→ View the interactive dashboard](https://k0nghong96.github.io/carousell-pokemon-market-analysis/pokemon_market_report.html)**
+**[→ Price lookup tool](https://k0nghong96.github.io/carousell-pokemon-market-analysis/pokemon_price_lookup.html)**
 
 An end-to-end pipeline that scrapes, cleans, and analyses the Pokémon TCG secondary market on Carousell Malaysia.
 
